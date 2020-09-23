@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+from django.views import generic
 
-# Create your views here.
-from django.http import HttpResponse
 
-
-def home(request):
-    return HttpResponse("Hello homepage")
+class HomeView(generic.DetailView):
+    template_name = 'home/homescreen.html'
