@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     # 'social_app',
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -136,8 +135,8 @@ STATICFILES_FINDERS = [
 # Stuff for Google Login
 # https://medium.com/@whizzoe/in-5-mins-set-up-google-login-to-sign-up-users-on-django-e71d5c38f5d5
 AUTHENTICATION_BACKENDS = (
- 'django.contrib.auth.backends.ModelBackend',
- 'allauth.account.auth_backends.AuthenticationBackend',
+     'django.contrib.auth.backends.ModelBackend',
+     'allauth.account.auth_backends.AuthenticationBackend',
  )
 
 SITE_ID = 1
