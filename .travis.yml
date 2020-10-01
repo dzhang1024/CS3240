@@ -9,3 +9,6 @@ deploy:
   provider: heroku
   api_key:
     secure: nsFgFq8rAOZsfHCLKFbQ+6ICB0gT7leZp+iPws52DpRQGnY3fUevkeZm3bnu5H7LVa+0menlA4FuWrweS2sIhag4wX6LybncBzTqfiIHVnRoUZDMTSVjdFuClOHQwTlA/mtHw/Zf4Y6WIsMQcEPzsJBk+ypZ3swxUvDLncRllendESBQjyOD4rNboVoTyaNrHIiVmTE2oP1wmNiq1N6V8nnlBie0iKg0gmFUMlBGOY3pw1hZXgf6pzQ4D0GpzdZERse1QpbiAfmlgBB6mMWkOpEY1kk+oCQshkKsCMFj6eGaJ+zpmjv7DAwrjMP3bahkv9jF3Qf3KGBZxORq544opuraa1C3R98712ahG41TLGMU2hLBD/EifCOjgwV9+l5f33kSHHwAQmA8Bu2wOCcYEBxlPTj9EXNH1r3s48dhDj4Xhs0NmNanihNNyeQtwvF3nvgljTA2rCAurFARhmakjTAeKh+cTs+YZpbQ9rh9PJ7uZQ1p9bTKAgeE+Y4ZYtagcrdd1IQtEpqmRce7uxX+fVptkrqpBtsBE/sCRDigKxk6a0mb9FvAq89+MBXMKPmHJVTpF/J6TANEMFns/VmISJXj8qlQdD+jeUlbx+VihSPahiDIq7LsdtMZsmAudEj2c8bY1Ol/Vzp/KC1VdKXQZluV7FSe2ftufdNPtdWSxik=
+    app: hooslistening119
+    on:
+      repo: uva-cs3240-f20/project-1-19
