@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
+<!--{% load socialaccount %}-->
 
 {% block content %}
-<p><a href="Login">Login</a></p>
+
+<h2>Homescreen</h2>
+
+{% if user.is_authenticated %}
+  <p>Welcome, {{ user.username }}! You've logged in with your Google Account with the email <a href="mailto:{{user.email}}"> {{ user.email}}</a>.</p>
+  <a href="/accounts/logout">Click here to sign out.</a>
+  <br><br>
+{% else %}
+  <a href="{% provider_login_url 'google' %}">Login with Google</a>
+{% endif %}
+
 {% endblock %}
