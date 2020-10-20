@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'hooslistening.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd7o9bj1b2037v4',
+        'USER': 'vsxtycthyvwfkv',
+        'PASSWORD': 'e201fde8e0f1d989b2a7adff6a7a6d83b730213905bef4a5916e8691fcb05d67',
+        'HOST': 'ec2-54-161-58-21.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
