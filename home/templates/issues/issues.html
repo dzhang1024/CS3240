@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
 {%block content%}
-<p>Hey, {{ user.username }}! Here are some of the most popular issues occuring right now!</p>
+    <p>Hey{{ user.username }}! Here are some of the most popular issues occuring right now!</p>
+    <ul>
+        {%for issue in all_issues%}
+            {{issue.issue_name}}
+        {%endfor%}
+    </ul>
+
 {%endblock%}
