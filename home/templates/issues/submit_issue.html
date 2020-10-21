@@ -1,0 +1,11 @@
+{% extends 'issue_submit_base.html' %}
+
+{%block content%}
+    <p>Hey {{ user.username }}! Submit the issue that you care about!</p>
+    <ul>
+        <form method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="Submit" value="Save">
+        </form>
+    </ul>
+{%endblock%}

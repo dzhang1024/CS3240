@@ -8,4 +8,5 @@ app_name = "home"
 urlpatterns = [
     path('', views.home, name='home'),
     path('issues', views.issues, name='issues'),
+    path('issues/submit', views.SubmitIssue.as_view(), name='submit_issue')
 ]
