@@ -2,11 +2,15 @@
 
 {%block content%}
     <p>Hey {{ user.username }}! Here are some of the most popular issues occuring right now!</p>
-    <ul>
-        {%for issue in all_issues%}
-            {{issue.object.issue_name}}
-        {%endfor%}
-    </ul>
+    {%if all_issues%}
+        <ul>
+            {%for issue in all_issues%}
+                {{issue.issue_name}}<br>
+            {%endfor%}
+        </ul>
+    {% else %}
+        <p>Currently no issues available.</p>
+    {% endif %}
     <p> Not the issues you're looking for? No problem <a href="issues/submit">here</a> to create an issue you care about!</p>
 
 {%endblock%}
