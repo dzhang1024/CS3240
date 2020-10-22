@@ -1,14 +1,17 @@
 language: python
 python:
 - '3.8'
+addons:
+  postgresql: "9.3"
 install:
 - pip install -r requirements-travis.txt
 script:
-- python manage.py test
+- python manage.py test --keepdb
 deploy:
   provider: heroku
   api_key:
-    secure: uts2XCMdrrq/4L1kme6sF1HTHaS4ezYqJgKWBhWrBWt/+0r4RFANCC1lmJkyFCbNl85YNhUCP0C/1zXGYfSJby2RsqUer/00005WNSX17wyq3jEW1GhzkMeGmWVyYoSN4jbZIJELnljttTuCnlGHIZXOCKhmvdmCJxWj6E1JmC39MpIbaz95BupfunoPjeMyhXI6mmMV3xoJprBxCvB6uBgW4/cXHCWGaVvl05UIgH3BpsNLf7truXFvwBW5K6eq+wQckWdnrhH1vr8zOzLOZwNIX+AEsQkhP0k/U3rGNITm+itI2yanrZSkPmiWHRaXArtFo64Ydko2reSak4/mj7f/bt0eDO3Uc6tnz/IL/lb2r+cWQezS5UsXWwxC+2K0DV8+qDeBQLt6rXWM0et4U1exbVSe63Rf0FlQTXqBVe1CR2fGvSzBlG7EBNwd+GSWKddfod/Hy1+uO3LheIPPTs08DMnUASfMybRT7cu2Wvk4U7gnSc35HWJwPN/qp3LZF8Ey09LeRDcsLtNwaBHme0051sl5dQt45WvxQqzMcRROYIX9notCInTWOgY7dvXIkK08iWjhK80EDvi5ZF1kgztgoIS85/4LS77ovwWqyKdoKhBfbDaIRXV3jwA+THFYDj6mcb5p2xpKuo5ck83IAtp2TsVyPjQzp+tz8/tHYfk=
-    app: hooslistening119
-    on:
-      repo: uva-cs3240-f20/project-1-19
+    secure: q+OA+xxgmAeglAXsOvlGdSxxhi6/k5IVyXWe+dox5GRM+xbRosgM02ujSi6RztluzOwmzU/N0ncvsfpiI06HEmpvtEmNLg9sew0/NgAhPPQ9b/kHWSaX6hICkv1A2NaYVdpogDHTHKR1x33tF1hHK5AK9e48CyUk342j64IfyYkfV9qOz0LoUQEXAJUOOeF0Y8mq3U6lFLT70FR5wBUZXRXMr3ut5glYyEreEnbLGzy9BrEl+H4v/J/7n24J5DP3un9ow+fWjhJSBnkdz3+nKItY0O7Vb7Do5qoDpx0bymwZpZBA5UX1RsNqyMT4tV04aNKinyoniOkbCPeTVyjxQPFxdBl+WWnBpeV97Q1IwVlUUa79yPML07cna73pGhyq11Uh2Yq4O/ECXqvkhNR2dGAqT5XgojGfgtFYvhxAf65Axc2PzcPoohmuj9TnxfgzQpJXPfqaTmn8pgN0F7S+UtVAfVf60SqHBX3bGFoUGN495Pz0pTYhanWiILfgxt60H6vpYgtDGSWmIgv9SYl9PtHHEA4SCCa1w3+yx1LSQhmsTXoaqZKnjjSPLWvghGVNWOx36dYx+2OV9yb8SV1Tk5aOUoVLSFEtrD2nv/Epng5+qAqNT01CUIDOp/D6NIP1ZHdCx4YtgkuXnEwMGLtKpVXZIKKBnRA7UyzBLRQUnYw=
+  app: hooslistening119
+  on:
+    repo: uva-cs3240-f20/project-1-19
+    branch: master

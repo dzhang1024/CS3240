@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 from pathlib import Path
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ SECRET_KEY = 'fl-b2ftmgk7&#h_$)7&-q7o4%$kwfz5t43kg3tu4l#clj@ckrl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hooslistening119.herokuapp.com']
 
 
 # Application definition
@@ -81,12 +82,21 @@ WSGI_APPLICATION = 'hooslistening.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
+DATABASES = { #ACTUAL DATABASE FOR PRODUCTION
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd7o9bj1b2037v4',
+        'USER': 'vsxtycthyvwfkv',
+        'PASSWORD': 'e201fde8e0f1d989b2a7adff6a7a6d83b730213905bef4a5916e8691fcb05d67',
+        'HOST': 'ec2-54-161-58-21.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'TEST': {
+            'NAME': 'd7o9bj1b2037v4', 
+        }
     }
 }
+d = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES['default'].update(d)
 
 
 # Password validation
@@ -125,7 +135,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -140,7 +152,7 @@ AUTHENTICATION_BACKENDS = (
 
 # SITE_ID = 0 For 127.0.0.1
 # SIDE_ID = 1 For one with URL
-SITE_ID = 1
+SITE_ID = 2
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
