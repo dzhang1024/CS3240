@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 from pathlib import Path
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'hooslistening.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
+DATABASES = { #ACTUAL DATABASE FOR PRODUCTION
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd7o9bj1b2037v4',
@@ -89,8 +90,13 @@ DATABASES = {
         'PASSWORD': 'e201fde8e0f1d989b2a7adff6a7a6d83b730213905bef4a5916e8691fcb05d67',
         'HOST': 'ec2-54-161-58-21.compute-1.amazonaws.com',
         'PORT': '5432',
+        'TEST': {
+            'NAME': 'd7o9bj1b2037v4', 
+        }
     }
 }
+d = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES['default'].update(d)
 
 
 # Password validation
