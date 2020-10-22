@@ -82,15 +82,32 @@ WSGI_APPLICATION = 'hooslistening.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd7o9bj1b2037v4',
-        'USER': 'vsxtycthyvwfkv',
-        'PASSWORD': 'e201fde8e0f1d989b2a7adff6a7a6d83b730213905bef4a5916e8691fcb05d67',
-        'HOST': 'ec2-54-161-58-21.compute-1.amazonaws.com',
-        'PORT': '5432',
-        'CONN_MAX_AGE': 500,
+if 'test' in sys.argv:
+    DATABASES = { # TESTING DB
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'd4rqgu4usqoo0m',
+            'USER': 'ikysqcfxdqaali',
+            'PASSWORD': '308bc25d82e3d3c9216033ddef5efa2d4c160bab10adcba17c56914777dcbd27',
+            'HOST': 'ec2-100-25-100-81.compute-1.amazonaws.com',
+            'PORT': '5432',
+            'TEST': {
+                'NAME': 'd4rqgu4usqoo0m', #This is an important entry
+            }
+    }
+}
+else:
+    DATABASES = { #ACTUAL DATABASE FOR PRODUCTION
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'd7o9bj1b2037v4',
+            'USER': 'vsxtycthyvwfkv',
+            'PASSWORD': 'e201fde8e0f1d989b2a7adff6a7a6d83b730213905bef4a5916e8691fcb05d67',
+            'HOST': 'ec2-54-161-58-21.compute-1.amazonaws.com',
+            'PORT': '5432',
+            'TEST': {
+                'NAME': 'd7o9bj1b2037v4', 
+            }
     }
 }
 d = dj_database_url.config(conn_max_age=600, ssl_require=True)
