@@ -5,7 +5,7 @@
     {%if all_issues%}
         <ul>
             {%for issue in all_issues%}
-                {{issue.issue_name}}<br>
+                <li><a href="{% url 'home:issues_detail' slug=issue.slug %}">{{issue.issue_name}}</a></li>
             {%endfor%}
         </ul>
     {% else %}

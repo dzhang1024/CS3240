@@ -13,6 +13,10 @@ class IssueList(generic.ListView):
     template_name = 'issues/issues.html' 
     context_object_name = 'all_issues'
 
+def detail(request, slug):
+    obj = get_object_or_404(Issue, slug=slug)
+    return render(request, 'issues/issues_detail.html', {'issue': obj})
+
 class SubmitIssue(CreateView): #use a createview form to allow users to submit new issues
     model = Issue
     fields = ['issue_name', 'description', 'category']
