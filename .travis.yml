@@ -6,7 +6,7 @@ addons:
 install:
 - pip install -r requirements-travis.txt
 script:
-- python manage.py test
+- python manage.py test --keepdb
 deploy:
   provider: heroku
   api_key:
