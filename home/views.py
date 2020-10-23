@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.views import generic 
 from django.views.generic.edit import CreateView
 from .models import Issue 
+from django.urls import reverse_lazy
 
 def home(request):
     return render(request, 'home/homescreen.html')
@@ -13,13 +14,13 @@ class IssueList(generic.ListView):
     template_name = 'issues/issues.html' 
     context_object_name = 'all_issues'
 
-def detail(request, slug):
-    obj = get_object_or_404(Issue, slug=slug)
-    return render(request, 'issues/issues_detail.html', {'issue': obj})
+class IssueDetail(generic.DetailView):
+    model = Issue
+    template_name = 'issues/issues_detail.html'
 
 class SubmitIssue(CreateView): #use a createview form to allow users to submit new issues
     model = Issue
     fields = ['issue_name', 'description', 'category']
     template_name = 'issues/submit_issue.html'
-    success_url = '/issues'
+    success_url = reverse_lazy('home:issues')
     

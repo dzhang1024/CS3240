@@ -5,12 +5,12 @@
     {%if all_issues%}
         <ul>
             {%for issue in all_issues%}
-                <li><a href="{% url 'home:issues_detail' slug=issue.slug %}">{{issue.issue_name}}</a></li>
+                <li><a href="{%url 'home:issues_detail' issue.id%}">{{issue.issue_name}}</a></li>
             {%endfor%}
         </ul>
     {% else %}
         <p>Currently no issues available.</p>
     {% endif %}
-    <p> Not the issues you're looking for? No problem <a href="issues/submit">here</a> to create an issue you care about!</p>
+    <p> Not the issues you're looking for? No problem <a href="{% url 'home:submit_issue'%}">here</a> to create an issue you care about!</p>
 
 {%endblock%}
