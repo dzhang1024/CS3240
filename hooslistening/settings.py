@@ -26,8 +26,8 @@ SECRET_KEY = 'fl-b2ftmgk7&#h_$)7&-q7o4%$kwfz5t43kg3tu4l#clj@ckrl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hooslistening119.herokuapp.com']
-
+# ALLOWED_HOSTS = ['hooslistening119.herokuapp.com']
+ALLOWED_HOSTS = ['hooslistening119.herokuapp.com', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+    'phone_field'
 ]
 
 
@@ -150,9 +152,9 @@ AUTHENTICATION_BACKENDS = (
      'allauth.account.auth_backends.AuthenticationBackend',
  )
 
-# SITE_ID = 0 For 127.0.0.1
-# SIDE_ID = 1 For one with URL
-SITE_ID = 2
+# SITE_ID = 3 For 127.0.0.1
+# SIDE_ID = 4 For https://hooslistening119.herokuapp.com/
+SITE_ID = 3
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
