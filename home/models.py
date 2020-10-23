@@ -10,5 +10,5 @@ class Issue(models.Model):
     slug = models.SlugField(default='', editable=False, max_length=200, null = False)
 
     def __str__(self):
-        self.slug = slugify(issue_name, allow_unicode=True)
+        #self.slug = slugify(self.issue_name, allow_unicode=True)
         return self.issue_name
