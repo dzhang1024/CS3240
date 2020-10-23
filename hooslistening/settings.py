@@ -151,9 +151,11 @@ AUTHENTICATION_BACKENDS = (
      'allauth.account.auth_backends.AuthenticationBackend',
  )
 
+
 # SITE_ID = 3 For 127.0.0.1
 # SIDE_ID = 4 For one with URL
 SITE_ID = 4
+
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {

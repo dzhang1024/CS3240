@@ -1,7 +1,7 @@
 {% extends 'issue_submit_base.html' %}
 
 {%block content%}
-    <p>Hey {{ user.username }}! Submit the issue that you care about!</p>
+    <p>Hey {{ user.first_name }}! Submit the issue that you care about!</p>
     <ul>
         <form method="post">{% csrf_token %}
             {{ form.as_p }}
