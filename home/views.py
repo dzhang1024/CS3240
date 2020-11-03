@@ -27,7 +27,7 @@ class SubmitIssue(CreateView): #use a createview form to allow users to submit n
     template_name = 'issues/submit_issue.html'
     success_url = reverse_lazy('home:issues')
 
-def contact(request, pk):
+def contact(request, pk): #this is the views page that controls what we see in terms of forms
     if request.method == 'GET':
         form = ContactForm()
     else:
@@ -38,10 +38,13 @@ def contact(request, pk):
             message = form.cleaned_data['message']
             recipient = form.cleaned_data['recipient']
             try: 
-                send_mail(subject, message, 'dz9sb@virginia.edu', [recipient], fail_silently=False)
+                #this sends the email with the subject line as desired
+                #sender is my email (for now)
+                #recipient is filled out
+                send_mail('Hoos Listening: ' + subject, message, 'dz9sb@virginia.edu', [recipient], fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
-            return HttpResponse('success')
+            return HttpResponse('success') #redirects to some success page (for now)
     return render(request, 'issues/email_page.html', {'form': form})
 
 def success(request):
