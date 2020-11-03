@@ -170,6 +170,13 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = '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'
+
 # Activate Django-Heroku.
 try:
     # Configure Django App for Heroku.

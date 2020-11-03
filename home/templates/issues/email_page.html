@@ -1,11 +1,12 @@
 {% extends 'email_base.html' %}
 
 {%block content%}
-    <p>Hey {{ user.first_name }}! Fill in a message to send to your local representative!</p>
-    <ul>
-        <form method="post">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="Submit" value="Save">
-        </form>
-    </ul>
+    <p>Hey {{ user.first_name }}! Fill in a message to send to your school representative!</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-actions">
+          <button type="submit">Send</button>
+        </div>
+    </form>
 {%endblock%}
