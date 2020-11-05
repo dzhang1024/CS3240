@@ -8,5 +8,6 @@ app_name = "home"
 urlpatterns = [
     path('', views.home, name='home'),
     path('profile/', views.profile, name='profile'),
-    path('profile/update/', views.UpdateProfileView.as_view(), name='update_profile'),
+    path('profile/update/', views.update_profile, name='update_profile'),
+    # path('profile/update/', views.UpdateProfileView.as_view(), name='update_profile'),
 ]
