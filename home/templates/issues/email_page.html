@@ -1,11 +1,20 @@
 {% extends 'email_base.html' %}
 
 {%block content%}
-    <p>Hey {{ user.first_name }}! Fill in a message to send to your local representative!</p>
-    <ul>
-        <form method="post">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="Submit" value="Save">
-        </form>
-    </ul>
+    <p>Hey {{ user.first_name }}! Fill in a message to send to your school representative!</p>
+    {% load crispy_forms_tags %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-6">
+            {{ form.recipient_email|as_crispy_field }}
+          </div>
+          <div class="col-6">
+            {{ form.sender|as_crispy_field }}
+          </div>
+        </div>
+        {{ form.subject|as_crispy_field }}
+        {{ form.message|as_crispy_field }}
+        <button type="submit">Send</button>
+    </form>
 {%endblock%}

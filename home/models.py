@@ -12,8 +12,3 @@ class Issue(models.Model):
         #self.slug = slugify(self.issue_name, allow_unicode=True)
         return self.issue_name
 
-class Email(models.Model):
-    user_name = models.CharField(max_length=50, default="")
-    email_comment = models.TextField()
-    def __str__(self):
-        return self.user_name
