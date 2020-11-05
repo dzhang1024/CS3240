@@ -7,9 +7,11 @@
 
 {% if user.is_authenticated %}
   <ul>
-    <form method="post"> {% csrf_token %}
-      {{ form.as_p }}
-      <input type="Submit" value="Save">
+    <form method="post">
+      {% csrf_token %}
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <button type="Submit"> Save Changes </button>>
     </form>
   </ul>
 {% else %}

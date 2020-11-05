@@ -13,6 +13,9 @@ from pathlib import Path
 import dj_database_url
 import os
 
+# Set to true if in development environment, else set to false if in production
+DEVELOPMENT = True
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -84,21 +87,29 @@ WSGI_APPLICATION = 'hooslistening.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = { #ACTUAL DATABASE FOR PRODUCTION
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd7o9bj1b2037v4',
-        'USER': 'vsxtycthyvwfkv',
-        'PASSWORD': 'e201fde8e0f1d989b2a7adff6a7a6d83b730213905bef4a5916e8691fcb05d67',
-        'HOST': 'ec2-54-161-58-21.compute-1.amazonaws.com',
-        'PORT': '5432',
-        'TEST': {
-            'NAME': 'd7o9bj1b2037v4', 
+if DEVELOPMENT:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-}
-d = dj_database_url.config(conn_max_age=600, ssl_require=True)
-DATABASES['default'].update(d)
+else:
+    DATABASES = { #ACTUAL DATABASE FOR PRODUCTION
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'd7o9bj1b2037v4',
+            'USER': 'vsxtycthyvwfkv',
+            'PASSWORD': 'e201fde8e0f1d989b2a7adff6a7a6d83b730213905bef4a5916e8691fcb05d67',
+            'HOST': 'ec2-54-161-58-21.compute-1.amazonaws.com',
+            'PORT': '5432',
+            'TEST': {
+                'NAME': 'd7o9bj1b2037v4',
+            }
+        }
+    }
+    d = dj_database_url.config(conn_max_age=600, ssl_require=True)
+    DATABASES['default'].update(d)
 
 
 # Password validation
@@ -154,7 +165,7 @@ AUTHENTICATION_BACKENDS = (
 
 # SITE_ID = 3 For 127.0.0.1
 # SIDE_ID = 4 For https://hooslistening119.herokuapp.com/
-SITE_ID = 3
+SITE_ID = 0
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
