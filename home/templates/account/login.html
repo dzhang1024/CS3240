@@ -7,7 +7,6 @@
 {% trans "Sign In" %}
 {% endblock %}
 
-
 {% block content %}
 <h1>{% trans "Sign In Required" %}</h1>
 
@@ -21,10 +20,3 @@ of your existing third party accounts listed below. {% endblocktrans %}</p>
     {% include "socialaccount/snippets/provider_list.html" with process="login" %}
   </ul>
 </div>
-<!--{% include "socialaccount/snippets/login_extra.html" %}--
-
-{% else %}
-<p> No Social Account Providers found! Please contact the system administrator. </p>
-{% endif %}
-
-{% endblock %}

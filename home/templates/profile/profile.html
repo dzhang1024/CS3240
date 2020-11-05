@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
-<!--{% load socialaccount %}-->
+{% load socialaccount %}
 
 {% block content %}
 <br>
 <!--<h1>Profile</h1>-->
 {% if user.is_authenticated %}
-  <h2>{{ user.get_full_name }}</h2>
-  <ul>
-    <li>Username: {{ user.username }}</li>
-    <li>First Name: {{ user.first_name }}</li>
-    <li>Last Name: {{ user.last_name }}</li>
-    <li>Email: {{ user.email }}</li>
-    <li>Phone Number: {{ userprofile.phone_number }}</li>
-    <li>Address: {{ userprofile.street_address }}, {{ userprofile.city }}, {{ userprofile.state }} {{ userprofile.zip_code }} </li>
+  <h2>{{ user.get_full_name }}'s Profile</h2>
+  <ul class="list-group">
+    <li class="list-group-item">Full Name: {{ user.first_name }} {{ user.last_name }}</li>
+    <li class="list-group-item">Username: {{ user.username }}</li>
+    <li class="list-group-item">Email: {{ user.email }}</li>
+    <li class="list-group-item">Address: {{ userprofile.street_address }}, {{ userprofile.city }}, {{ userprofile.state }} {{ userprofile.zip_code }} </li>
+    <li class="list-group-item">Phone Number: {{ userprofile.phone_number }}</li>
 
-    <a href="/profile/update/">Update Profile</a>
+    <a href="/profile/update/" role="button">Update Profile</a>
   </ul>
+
 {% else %}
   <p>You are not logged in. Please log in below. </p>
   <a href="{% provider_login_url 'google' %}">Login with Google</a>

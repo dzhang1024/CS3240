@@ -1,19 +1,17 @@
 {% extends 'base.html' %}
-<!--{% load socialaccount %}-->
+{% load socialaccount %}
+{% load bootstrap4 %}
 
 {% block content %}
 
 <h2>Update Profile</h2>
-
 {% if user.is_authenticated %}
-  <ul>
     <form method="post">
       {% csrf_token %}
-      {{ user_form.as_p }}
-      {{ profile_form.as_p }}
-      <button type="Submit"> Save Changes </button>>
+      {% bootstrap_form user_form %}
+      {% bootstrap_form profile_form %}
+      <button class="btn btn-primary" type="Submit" >Save Changes</button>
     </form>
-  </ul>
 {% else %}
   <p>You are not logged in. Please log in below. </p>
   <a href="{% provider_login_url 'google' %}">Login with Google</a>
