@@ -34,14 +34,14 @@ def contact(request, pk): #this is the views page that controls what we see in t
         form = ContactForm(request.POST)
         if form.is_valid():
             subject = form.cleaned_data['subject']
-            #sender = form.cleaned_data['sender']
             message = form.cleaned_data['message']
-            recipient = form.cleaned_data['recipient']
+            recipient_email = form.cleaned_data['recipient_email']
+            sender = form.cleaned_data['sender']
             try: 
                 #this sends the email with the subject line as desired
                 #sender is my email (for now)
                 #recipient is filled out
-                send_mail('Hoos Listening: ' + subject, message, 'dz9sb@virginia.edu', [recipient], fail_silently=False)
+                send_mail('Hoos Listening: ' + subject, message + '\n \n' + 'Best regards,\n' + sender, 'dz9sb@virginia.edu', [recipient_email], fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
             return HttpResponse('success') #redirects to some success page (for now)
