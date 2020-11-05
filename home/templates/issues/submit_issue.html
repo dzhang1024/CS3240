@@ -1,10 +1,13 @@
 {% extends 'issue_submit_base.html' %}
 
 {%block content%}
-    <p>Hey {{ user.first_name }}! Submit the issue that you care about!</p>
+    <h1>Submit Issue</h1>
+    <p>Hey {{ user.first_name }}! Submit an issue that you care about!</p>
     <ul>
-        <form method="post">{% csrf_token %}
-            {{ form.as_p }}
+        {% load crispy_forms_tags %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
             <input type="Submit" value="Save">
         </form>
     </ul>
