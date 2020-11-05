@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {%block content%}
+    <h1>Issues List</h1>
     <p>Hey {{ user.first_name }}! Here are some of the most popular issues occuring right now!</p>
     {%if all_issues%}
         <ul>

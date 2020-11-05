@@ -47,7 +47,7 @@ def contact(request, pk): #this is the views page that controls what we see in t
             return HttpResponse('success') #redirects to some success page (for now)
     return render(request, 'issues/email_page.html', {'form': form})
 
-def success(request):
-    return HttpResponse('success')
+def success(request, pk):
+    return render(request, 'issues/email_success.html')
 
     
