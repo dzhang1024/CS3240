@@ -9,6 +9,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('issues/', views.IssueList.as_view(), name='issues'),
     path('issues/<int:pk>/', views.IssueDetail.as_view(), name='issues_detail'),
-    path('issues/<int:pk>/email_page', views.EmailIssue.as_view(), name='email_page'),
     path('issues/submit/', views.SubmitIssue.as_view(), name='submit_issue'),
 ]
