@@ -44,7 +44,7 @@ def contact(request, pk): #this is the views page that controls what we see in t
                 send_mail('Hoos Listening: ' + subject, message + '\n \n' + 'Best regards,\n' + sender, 'dz9sb@virginia.edu', [recipient_email], fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
-            return HttpResponse('success') #redirects to some success page (for now)
+            return render(request, 'issues/email_success.html') #redirects to some success page (for now)
     return render(request, 'issues/email_page.html', {'form': form})
 
 def success(request, pk):
