@@ -24,12 +24,15 @@ class Migration(migrations.Migration):
                 ('zip_code', models.CharField(blank=True, max_length=10, null=True)),
                 ('phone_number', phone_field.models.PhoneField(blank=True, max_length=31, null=True)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            name='Issue',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('issue_name', models.CharField(max_length=100)),
-                ('description', models.TextField()),
-                ('category', models.CharField(max_length=100)),
             ],
+        ),
+        migrations.CreateModel(
+            name='Issue',
+                fields=[
+                    ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                    ('issue_name', models.CharField(max_length=100)),
+                    ('description', models.TextField()),
+                    ('category', models.CharField(max_length=100)),
+                ],
         ),
     ]
