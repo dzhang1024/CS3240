@@ -6,9 +6,11 @@
 <h2>Homescreen</h2>
 
 {% if user.is_authenticated %}
-  <p>Welcome, {{ user.first_name }}! You've logged in with your Google Account with the email <a href="mailto:{{user.email}}"> {{ user.email}}</a>.</p>
+  <p>Welcome, {{ user.get_full_name }}! You've logged in with your Google Account with the email <a href="mailto:{{user.email}}"> {{ user.email}}</a>.</p>
+  <a href="/accounts/logout" class="btn btn-warning">Click here to sign out</a>
+  <br><br>
 {% else %}
-  <a href="{% provider_login_url 'google' %}">Login with Google</a>
+  <a href="{% provider_login_url 'google' %}" class="btn btn-primary">Login with Google</a>
 {% endif %}
 
 {% endblock %}
