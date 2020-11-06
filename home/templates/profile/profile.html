@@ -2,19 +2,30 @@
 {% load socialaccount %}
 
 {% block content %}
-<br>
-<!--<h1>Profile</h1>-->
 {% if user.is_authenticated %}
-  <h2>{{ user.get_full_name }}'s Profile</h2>
-  <ul class="list-group">
-    <li class="list-group-item">Full Name: {{ user.first_name }} {{ user.last_name }}</li>
-    <li class="list-group-item">Username: {{ user.username }}</li>
-    <li class="list-group-item">Email: {{ user.email }}</li>
-    <li class="list-group-item">Address: {{ userprofile.street_address }}, {{ userprofile.city }}, {{ userprofile.state }} {{ userprofile.zip_code }} </li>
-    <li class="list-group-item">Phone Number: {{ userprofile.phone_number }}</li>
 
-    <a href="/profile/update/" role="button">Update Profile</a>
-  </ul>
+  <div class="card" >
+    <div class="card-header">
+      <h5 class="card-title align-middle">{{ user.get_full_name }}'s Profile</h5>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">Full Name: {{ user.first_name }} {{ user.last_name }}</li>
+      <li class="list-group-item">Email: {{ user.email }}</li>
+      {% if userprofile.street_address != None %}
+      <li class="list-group-item">Address: {{ userprofile.street_address }}, {{ userprofile.city }}, {{ userprofile.state }} {{ userprofile.zip_code }} </li>
+      {% else %}
+      <li class="list-group-item">Address: N/A </li>
+      {% endif %}
+      {% if userprofile.phone_number != None %}
+      <li class="list-group-item">Phone Number: {{ userprofile.phone_number }}</li>
+      {% else %}
+      <li class="list-group-item">Phone Number: N/A </li>
+      {% endif %}
+    </ul>
+    <div class="card-body">
+        <a href="/profile/update/" class="btn btn-primary">Update Profile</a>
+    </div>
+  </div>
 
 {% else %}
   <p>You are not logged in. Please log in below. </p>
