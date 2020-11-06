@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{%block content%}
+    <h1>Issues List</h1>
+    <p>Hey {{ user.first_name }}! Here are some of the most popular issues occuring right now!</p>
+    {%if all_issues%}
+        <ul>
+            {%for issue in all_issues%}
+                <li><a href="{%url 'home:issues_detail' issue.id%}">{{issue.issue_name}}</a></li>
+            {%endfor%}
+        </ul>
+    {% else %}
+        <p>Currently no issues available.</p>
+    {% endif %}
+    <p> Not the issues you're looking for? No problem! <a href="{% url 'home:submit_issue'%}">Click here</a> to create an issue you care about!</p>
+
+{%endblock%}

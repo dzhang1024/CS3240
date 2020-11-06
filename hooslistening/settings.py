@@ -29,7 +29,6 @@ SECRET_KEY = 'fl-b2ftmgk7&#h_$)7&-q7o4%$kwfz5t43kg3tu4l#clj@ckrl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['hooslistening119.herokuapp.com']
 ALLOWED_HOSTS = ['hooslistening119.herokuapp.com', '127.0.0.1', 'localhost']
 
 # Application definition
@@ -49,9 +48,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'bootstrap4',
-    'phone_field'
+    'phone_field',
+    'crispy_forms',
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -165,7 +166,8 @@ AUTHENTICATION_BACKENDS = (
 
 # SITE_ID = 3 For 127.0.0.1
 # SIDE_ID = 4 For https://hooslistening119.herokuapp.com/
-SITE_ID = 0
+SITE_ID = 4
+
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -179,6 +181,13 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = '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'
 
 # Activate Django-Heroku.
 try:
