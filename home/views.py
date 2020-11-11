@@ -61,7 +61,10 @@ class SubmitIssue(CreateView): #use a createview form to allow users to submit n
 
 def contact(request, pk): #this is the views page that controls what we see in terms of forms
     if request.method == 'GET':
-        form = ContactForm()
+        issueName = Issue.objects.get(pk=pk)
+        senderName = request.user.get_full_name
+        template = 'To whom it may concern, \n \nMy name is (name), and I am currently writing to you regarding an issue about ' + str(issueName)+'.'
+        form = ContactForm(initial={'message': template, 'subject': issueName, 'sender': senderName})
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
