@@ -55,7 +55,7 @@ class IssueDetail(generic.DetailView):
 
 class SubmitIssue(CreateView): #use a createview form to allow users to submit new issues
     model = Issue
-    fields = ['issue_name', 'description', 'category']
+    fields = ['issue_name', 'description', 'email_template']
     template_name = 'issues/submit_issue.html'
     success_url = reverse_lazy('home:issues')
 
@@ -63,7 +63,7 @@ def contact(request, pk): #this is the views page that controls what we see in t
     if request.method == 'GET':
         issueName = Issue.objects.get(pk=pk)
         senderName = request.user.get_full_name
-        template = 'To whom it may concern, \n \nMy name is (name), and I am currently writing to you regarding an issue about ' + str(issueName)+'.'
+        template = Issue.objects.get(pk=pk).email_template
         form = ContactForm(initial={'message': template, 'subject': issueName, 'sender': senderName})
     else:
         form = ContactForm(request.POST)
