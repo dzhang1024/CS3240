@@ -14,7 +14,7 @@ import dj_database_url
 import os
 
 # Set to true if in development environment, else set to false if in production
-DEVELOPMENT = False
+DEVELOPMENT = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -178,6 +178,11 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
+        },
+        'APP': {
+            'client_id': '919486683843-7ekgvc6t9uod6rcqf603b1udglm8br4s.apps.googleusercontent.com',
+            'secret': 'DIlanCzjvk4eGvS5TsuSB4Iq',
+            'key': ''
         }
     }
 }
