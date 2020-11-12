@@ -3,6 +3,8 @@ from django.views.generic.base import TemplateView
 from . import views
 from django.urls import path, include
 from django.views.generic import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = "home"
 urlpatterns = [
@@ -15,4 +17,10 @@ urlpatterns = [
     path('issues/<int:pk>/email_page', views.contact, name='email_page'),
     path('issues/<int:pk>/email_page/success/', views.success, name='success'), #successurl
     path('issues/submit/', views.SubmitIssue.as_view(), name='submit_issue'),
+
 ]
+
+# Derived from
+# https://simpleisbetterthancomplex.com/tutorial/2016/08/01/how-to-upload-files-with-django.html
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

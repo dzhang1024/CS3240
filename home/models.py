@@ -23,21 +23,15 @@ class UserProfile(models.Model):
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
-    # instance.userprofile.save()
     else:
-        # UserProfile.objects.create(user=instance)
         instance.userprofile.save()
-
-
-# Create your models here.
 
 
 class Issue(models.Model):
     issue_name = models.CharField(max_length=100)
     description = models.TextField()
     category = models.CharField(max_length=100)
-    # slug = models.SlugField(default='', editable=False, max_length=200, null = False)
+    image = models.ImageField(upload_to='documents/', default=None, blank=True)
 
     def __str__(self):
-        # self.slug = slugify(self.issue_name, allow_unicode=True)
         return self.issue_name

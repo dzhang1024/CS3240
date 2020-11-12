@@ -5,10 +5,11 @@
     <p>Hey {{ user.first_name }}! Submit an issue that you care about!</p>
     <ul>
         {% load crispy_forms_tags %}
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form|crispy }}
-            <input type="Submit" value="Save">
+<!--            <input type="Submit" value="Save">-->
+            <button class="btn btn-primary" type="Submit" >Save Changes</button>
         </form>
     </ul>
 {%endblock%}
