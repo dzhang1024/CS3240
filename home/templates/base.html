@@ -39,7 +39,7 @@
           {% if user.is_authenticated %}
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white" href="#" id="ProfileDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Hi, Steven! </a>
+              <a class="nav-link dropdown-toggle text-white" href="#" id="ProfileDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Hi, {{ user.first_name }}! </a>
               <div class="dropdown-menu bg-dark" aria-labelledby="ProfileDropdownMenuLink">
                 <a class="dropdown-item text-white" href="/profile">Profile</a>
                 <a class="dropdown-item text-white" href="/accounts/logout">Logout</a>
