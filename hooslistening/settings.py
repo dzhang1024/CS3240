@@ -166,7 +166,7 @@ AUTHENTICATION_BACKENDS = (
 
 # SITE_ID = 3 For 127.0.0.1
 # SIDE_ID = 4 For https://hooslistening119.herokuapp.com/
-SITE_ID = 0
+SITE_ID = 2
 
 LOGIN_REDIRECT_URL = '/'
 
