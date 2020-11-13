@@ -10,9 +10,10 @@
             {% if issue.approval == True %}
                 <div class="card text-center">
                 {% if issue.image %}
-                  <img class="card-img-top" src="{{ issue.image.url }}" alt="Image for {{ issue.issue_name }}">
+<!--                   <img class="card-img-top" src="{{ issue.image.url }}" alt="Image for {{ issue.issue_name }}"> -->
+                  <img class="card-img-top" src="https://github.com/uva-cs3240-f20/project-1-19/blob/master/documents/documents/default_image.png?raw=true" alt="Image for {{ issue.issue_name }}">
                 {% else %}
-                  <img class="card-img-top" src="/documents/documents/default_image.png" alt="Issue Image">
+                  <img class="card-img-top" src="https://github.com/uva-cs3240-f20/project-1-19/blob/master/documents/documents/default_image.png?raw=true" alt="Issue Image">
                 {% endif %}
                     <h5 class="card-header"> {{ issue.issue_name }} </h5>
                   <div class="card-body">
