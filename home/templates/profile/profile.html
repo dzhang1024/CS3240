@@ -5,9 +5,7 @@
 {% if user.is_authenticated %}
 
   <div class="card" >
-    <div class="card-header">
-      <h5 class="card-title align-middle">{{ user.get_full_name }}'s Profile</h5>
-    </div>
+    <h5 class="card-header">{{ user.get_full_name }}'s Profile</h5>
     <ul class="list-group">
       <li class="list-group-item">Full Name: {{ user.first_name }} {{ user.last_name }}</li>
       <li class="list-group-item">Email: {{ user.email }}</li>
@@ -24,9 +22,12 @@
       <li class="list-group-item">Phone Number: N/A </li>
       {% endif %}
     </ul>
-    <div class="card-body">
+    <div class="card-body text-center">
         <a href="/profile/update/" class="btn btn-primary">Update Profile</a>
     </div>
+      <div class="card-footer text-muted">
+        Note: Contact information above may be automatically included in any email submitted from this account. If you would like to omit any information from the emails, then please remove the relevant information above.
+      </div>
   </div>
 
 {% else %}
