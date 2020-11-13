@@ -2,22 +2,25 @@
 
 {%block content%}
     <h1>Issues List</h1>
-    <p>Hey {{ user.first_name }}! Here are some of the most popular issues occuring right now!</p>
-    {%if all_issues%}
+
+    <p>{% if user.is_authenticated %}Hey {{ user.first_name }}!{% else %} Hello!{% endif %} Here are some of the most popular issues occuring right now!</p>
+    {% if all_issues %}
         <div class="card-deck-issues">
         {%for issue in all_issues%}
-            <div class="card text-center">
-            {% if issue.image %}
-              <img class="card-img-top" src="{{ issue.image.url }}" alt="Image for {{ issue.issue_name }}">
-            {% else %}
-              <img class="card-img-top" src="/documents/documents/default_image.png" alt="Issue Image">
+            {% if issue.approval == True %}
+                <div class="card text-center">
+                {% if issue.image %}
+                  <img class="card-img-top" src="{{ issue.image.url }}" alt="Image for {{ issue.issue_name }}">
+                {% else %}
+                  <img class="card-img-top" src="/documents/documents/default_image.png" alt="Issue Image">
+                {% endif %}
+                    <h5 class="card-header"> {{ issue.issue_name }} </h5>
+                  <div class="card-body">
+                    <p class="card-text"> {{ issue.description }} </p>
+                    <a href="{%url 'home:issues_detail' issue.id%}" class="btn btn-primary">More Info</a>
+                  </div>
+                </div>
             {% endif %}
-                <h5 class="card-header"> {{ issue.issue_name }} </h5>
-              <div class="card-body">
-                <p class="card-text"> {{ issue.description }} </p>
-                <a href="{%url 'home:issues_detail' issue.id%}" class="btn btn-primary">More Info</a>
-              </div>
-            </div>
         {%endfor%}
         </div>
     {% else %}

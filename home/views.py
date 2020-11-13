@@ -62,6 +62,7 @@ class SubmitIssue(CreateView): #use a createview form to allow users to submit n
     success_url = reverse_lazy('home:issues')
 
 
+@login_required
 def contact(request, pk): #this is the views page that controls what we see in terms of forms
     if request.method == 'GET':
         issueName = Issue.objects.get(pk=pk)
@@ -86,6 +87,7 @@ def contact(request, pk): #this is the views page that controls what we see in t
     return render(request, 'issues/email_page.html', {'form': form})
 
 
+@login_required
 def success(request, pk):
     return render(request, 'issues/email_success.html')
 
