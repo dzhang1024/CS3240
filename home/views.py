@@ -49,16 +49,20 @@ class IssueList(generic.ListView):
     template_name = 'issues/issues.html' 
     context_object_name = 'all_issues'
 
+
 class IssueDetail(generic.DetailView):
     model = Issue
     template_name = 'issues/issues_detail.html'
 
+
 class SubmitIssue(CreateView): #use a createview form to allow users to submit new issues
     model = Issue
-    fields = ['issue_name', 'description', 'email_template']
+    fields = ['issue_name', 'description', 'email_template', 'image']
     template_name = 'issues/submit_issue.html'
     success_url = reverse_lazy('home:issues')
 
+
+@login_required
 def contact(request, pk): #this is the views page that controls what we see in terms of forms
     if request.method == 'GET':
         issueName = Issue.objects.get(pk=pk)
@@ -82,6 +86,8 @@ def contact(request, pk): #this is the views page that controls what we see in t
             return render(request, 'issues/email_success.html') #redirects to some success page (for now)
     return render(request, 'issues/email_page.html', {'form': form})
 
+
+@login_required
 def success(request, pk):
     return render(request, 'issues/email_success.html')
 

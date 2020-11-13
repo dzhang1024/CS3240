@@ -4,23 +4,23 @@
     <h1>Submit Issue</h1>
     <p>Hey {{ user.first_name }}! Submit an issue that you care about for approval!</p>
     <p>
-        This includes the title of your issue, a short description, and an email template that will
-        pre-populate when sending the email. 
+        This includes the title of your issue, a short description, an email template that will
+        pre-populate when sending the email, and a image to display to other users!
     </p>
     <p>
         Please be aware of the following when creating your template:
     </p>
     <li>
         Be sure to mark areas that may differ across different (name, address, email) with symbols such as:
-        ____, {}, (), etc. 
+        ____, {}, (), etc.
     </li>
     <li>
-        You do NOT need to include a signature, one is provided automatically for you!
+        You do NOT need to include a signature, as one will be filled in automatically for you!
     </li>
     <p></p>
     <ul>
         {% load crispy_forms_tags %}
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
                 <div class="col-6">
@@ -31,7 +31,8 @@
                 </div>
               </div>
               {{ form.email_template|as_crispy_field }}
-            <input type="Submit" value="Submit">
+              {{ form.image|as_crispy_field }}
+            <button class="btn btn-primary" type="Submit" >Save Changes</button>
         </form>
     </ul>
 {%endblock%}

@@ -27,3 +27,4 @@ urllib3==1.25.10
 wrapt==1.12.1
 django-phone-field
 django-bootstrap4
+Pillow

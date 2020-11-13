@@ -17,9 +17,9 @@ class ProfileForm(forms.ModelForm):
         fields = ('street_address', 'city', 'state', 'zip_code', 'phone_number')
 
 
-#created form that has subject recipient and message
+# created form that has subject recipient and message
 class ContactForm(forms.Form):
-    recipient_email = forms.EmailField(required = True)
-    sender = forms.CharField(required = True)
-    subject = forms.CharField(required = True)
-    message = forms.CharField(widget=forms.Textarea, required = True)
+    recipient_email = forms.EmailField(required=True)
+    sender = forms.CharField(required=True)
+    subject = forms.CharField(required=True)
+    message = forms.CharField(widget=forms.Textarea, required=True)
