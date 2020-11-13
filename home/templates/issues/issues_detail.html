@@ -4,7 +4,11 @@
 
 <div class="card mb-3">
   <h5 class="card-header">{{ issue.issue_name }}</h5>
-  <img class="card-img-top-description" src="{{ issue.image.url }}" alt="Card image cap">
+  {% if issue.image %}
+    <img class="card-img-top-description" src="{{ issue.image.url }}" alt="Image for {{ issue.issue_name }}">
+  {% else %}
+    <img class="card-img-top-description" src="https://hooslistening119f20.s3.amazonaws.com/documents/default_image.png" alt="Issue Image">
+  {% endif %}
   <div class="list-group list-grou-flush">
     <li class="list-group-item">Description: {{ issue.description }}</li>
     <li class="list-group-item">Template: {{ issue.email_template }}</li>
