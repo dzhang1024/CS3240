@@ -6,7 +6,9 @@
     {%if all_issues%}
         <ul>
             {%for issue in all_issues%}
+                {% if issue.approval %}
                 <li><a href="{%url 'home:issues_detail' issue.id%}">{{issue.issue_name}}</a></li>
+                {% endif %}
             {%endfor%}
         </ul>
     {% else %}
