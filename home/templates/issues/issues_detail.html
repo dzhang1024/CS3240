@@ -2,7 +2,10 @@
 
 {%block content%}
 <h1>{{issue.issue_name}}</h1>
-<h>Category: {{issue.category}} </h>
-<p> Description: {{issue.description}} </p>
-<a href="{%url 'home:email_page' issue.id%}">Contact Representative</a>
+<h> Description: </h>
+<p>
+    {{issue.description}}
+</p>
+
+<p><a href="{%url 'home:email_page' issue.id%}">Contact Representative</a></p>
 {%endblock%}
