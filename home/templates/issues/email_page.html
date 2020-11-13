@@ -1,7 +1,10 @@
 {% extends 'issue_base.html' %}
 
 {%block content%}
-    <p>Hey {{ user.first_name }}! Fill in a message to send to your school representative!</p>
+    <h2>Send Email</h2>
+    <p>Hey {{ user.first_name }}! Fill in the fields below to send an email to the specified representative!</p>
+    <div class="dropdown-divider"></div>
+
     {% load crispy_forms_tags %}
     <form method="post">
         {% csrf_token %}
@@ -15,6 +18,6 @@
         </div>
         {{ form.subject|as_crispy_field }}
         {{ form.message|as_crispy_field }}
-        <button type="submit">Send</button>
+        <button type="submit" class="btn btn-success">Send</button>
     </form>
 {%endblock%}

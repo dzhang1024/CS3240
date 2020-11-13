@@ -2,6 +2,8 @@
 
 {%block content%}
     <h1>Success!</h1>
-    <p>Success! Your email has been successfully sent, {{ user.first_name }}!</p>
-    <p><a href="{% url 'home:issues'%}">Click here</a> to go back to the issues page</p>
+    <p>Your email has been successfully sent, {{ user.first_name }}!</p>
+    <a href="{%url 'home:issues' %}" class="btn btn-primary ">Go back to issues page</a>
+
+<!--    <p><a href="{% url 'home:issues'%}">Click here</a> to go back to the issues page</p>-->
 {%endblock%}

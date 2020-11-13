@@ -1,11 +1,16 @@
 {% extends 'issue_base.html' %}
-
+{% load bootstrap4 %}
 {%block content%}
-<h1>{{issue.issue_name}}</h1>
-<h> Description: </h>
-<p>
-    {{issue.description}}
-</p>
 
-<p><a href="{%url 'home:email_page' issue.id%}">Contact Representative</a></p>
+<div class="card mb-3">
+  <h5 class="card-header">{{ issue.issue_name }}</h5>
+  <img class="card-img-top-description" src="{{ issue.image.url }}" alt="Card image cap">
+  <div class="list-group list-grou-flush">
+    <li class="list-group-item">Description: {{ issue.description }}</li>
+    <li class="list-group-item">Template: {{ issue.email_template }}</li>
+  </div>
+  <div class="card-body text-center">
+    <a href="{%url 'home:email_page' issue.id%}" class="btn btn-primary ">Contact Representative</a>
+  </div>
+</div>
 {%endblock%}
