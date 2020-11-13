@@ -11,11 +11,13 @@
     <ul class="list-group">
       <li class="list-group-item">Full Name: {{ user.first_name }} {{ user.last_name }}</li>
       <li class="list-group-item">Email: {{ user.email }}</li>
-      {% if userprofile.street_address != None %}
-      <li class="list-group-item">Address: {{ userprofile.street_address }}, {{ userprofile.city }}, {{ userprofile.state }} {{ userprofile.zip_code }} </li>
-      {% else %}
+
+      {% if userprofile.street_address == None and userprofile.city == None and userprofile.state == None and userprofile.zip_code == None %}
       <li class="list-group-item">Address: N/A </li>
+      {% else %}
+      <li class="list-group-item">Address: {% if userprofile.street_address %}{{ userprofile.street_address }}{% endif %}{% if userprofile.city %}{% if userprofile.street_address %}, {% endif %}{{ userprofile.city }}{% endif %}{%if userprofile.state %}{% if userprofile.state and userprofile.street_address or userprofile.city %}, {% endif %}{{ userprofile.state }}{% endif %} {%if userprofile.zip_code %}{{ userprofile.zip_code }}{% endif %}</li>
       {% endif %}
+
       {% if userprofile.phone_number != None %}
       <li class="list-group-item">Phone Number: {{ userprofile.phone_number }}</li>
       {% else %}
