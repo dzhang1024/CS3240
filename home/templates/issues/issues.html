@@ -10,10 +10,9 @@
             {% if issue.approval == True %}
                 <div class="card text-center">
                 {% if issue.image %}
-<!--                   <img class="card-img-top" src="{{ issue.image.url }}" alt="Image for {{ issue.issue_name }}"> -->
-                  <img class="card-img-top" src="https://i.imgur.com/poQ1g1H.png" alt="Image for {{ issue.issue_name }}">
+                  <img class="card-img-top" src="{{ issue.image.url }}" alt="Image for {{ issue.issue_name }}">
                 {% else %}
-                  <img class="card-img-top" src="https://i.imgur.com/poQ1g1H.png" alt="Issue Image">
+                  <img class="card-img-top" src="https://hooslistening119f20.s3.amazonaws.com/documents/default_image.png" alt="Issue Image">
                 {% endif %}
                     <h5 class="card-header"> {{ issue.issue_name }} </h5>
                   <div class="card-body">
