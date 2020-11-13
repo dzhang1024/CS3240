@@ -199,6 +199,7 @@ EMAIL_HOST_PASSWORD = 'SG.cJm0GrZMRP2csD_q7CJanQ.oDACeTdw7DIY7L55L-TDqxF2Pzn8RDR
 MEDIA_URL = '/documents/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_STORAGE_BUCKET_NAME = 'hooslistening119f20'
 AWS_S3_REGION_NAME = 'us-east-1'
 
