@@ -20,7 +20,7 @@
     <p></p>
     <ul>
         {% load crispy_forms_tags %}
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
                 <div class="col-6">
@@ -31,7 +31,7 @@
                 </div>
               </div>
               {{ form.email_template|as_crispy_field }}
-            <input type="Submit" value="Submit">
+            <button class="btn btn-primary" type="Submit" >Save Changes</button>
         </form>
     </ul>
 {%endblock%}
