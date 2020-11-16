@@ -191,10 +191,13 @@ SOCIALACCOUNT_PROVIDERS = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_HOST = 'hooslistening.email'
 EMAIL_HOST_USER = 'apikey'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = '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'
+# EMAIL_HOST_PASSWORD = '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'
+EMAIL_HOST_PASSWORD = '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'
+
 
 MEDIA_URL = '/documents/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
