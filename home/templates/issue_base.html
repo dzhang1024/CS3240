@@ -35,6 +35,9 @@
             <li class="nav-item active">
               <a class="nav-link" href="{%url 'home:issues'%}">Issues<span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'home:submit_issue'%}">Submit Issue Template</a>
+          </li>
           </ul>
           {% if user.is_authenticated %}
           <ul class="navbar-nav">
