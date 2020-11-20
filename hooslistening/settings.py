@@ -14,7 +14,7 @@ import dj_database_url
 import os
 
 # Set to true if in development environment, else set to false if in production
-DEVELOPMENT = False
+DEVELOPMENT = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

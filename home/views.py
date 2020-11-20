@@ -12,6 +12,7 @@ from django.views.generic.edit import CreateView
 from .models import Issue, UserProfile
 from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 def home(request):
@@ -55,11 +56,12 @@ class IssueDetail(generic.DetailView):
     template_name = 'issues/issues_detail.html'
 
 
-class SubmitIssue(CreateView): #use a createview form to allow users to submit new issues
+class SubmitIssue(SuccessMessageMixin, CreateView): #use a createview form to allow users to submit new issues
     model = Issue
     fields = ['issue_name', 'description', 'email_template', 'image']
     template_name = 'issues/submit_issue.html'
     success_url = reverse_lazy('home:issues')
+    success_message = "Thanks for submitting a new issue! It is now pending admin approval."
 
 
 @login_required
