@@ -2,15 +2,57 @@
 <!--{% load socialaccount %}-->
 
 {% block content %}
-
-<h2>Homescreen</h2>
+<style>
+  h1{text-align: center;}
+  p{text-align: center;}
+</style>
 
 {% if user.is_authenticated %}
-  <p>Welcome, {{ user.get_full_name }}! You've logged in with your Google Account with the email <a href="mailto:{{user.email}}"> {{ user.email}}</a>.</p>
-  <a href="/accounts/logout" class="btn btn-warning">Click here to sign out</a>
-  <br><br>
+  <h1>Welcome to Hoos Listening, {{ user.first_name }}!</h1>
+  <p>Want to look at some existing issues? <a href="{%url 'home:issues'%}">Click here!</a></p>
+  <p>Want to express something you're passionate about? <a href="{%url 'home:submit_issue'%}">Click here!</a></p>
+  <hr>
 {% else %}
-  <a href="{% provider_login_url 'google' %}" class="btn btn-primary">Login with Google</a>
+  <h1>Welcome to Hoos Listening!</h1>
+  <p>Hey newcomer! We're excited to have you use Hoos Listening! But first, please login with a Google Account so that we can register a profile in your name!</p>
+  <p><a href="{% provider_login_url 'google' %}" class="btn btn-primary">Login with Google</a></p>
 {% endif %}
-
+<section class="page-section" id="services">
+  <div class="container">
+      <div class="text-center">
+          <h2 class="section-heading text-uppercase">Contacting Representatives</h2>
+          <h3 class="section-subheading text-muted">Communication made easy</h3>
+      </div>
+      <div class="row text-center">
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                  <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">1. Fill in your information</h4>
+              <p class="text-muted">Adjust your personal information on your <a href="/profile">profile page</a> found in the top right of the screen!</p>
+          </div>
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                  <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">2. Look at the issues</h4>
+              <p class="text-muted">Scroll through current issues that people are writing to their representatives about in the <a href="{%url 'home:issues'%}">issues tab!</a></p>
+          </div>
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                  <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">3. Submit your own issues</h4>
+              <p class="text-muted">Can't find what you're looking for? <a href="{%url 'home:submit_issue'%}">Submit</a> your own issue complete with an image, description and email template</p>
+          </div>
+      </div>
+      <div class="text-center">
+        <h4 class="my-3">4. Email!</h4>
+        <p class="text-muted">Simply click 'Email Representative' while looking through an issue and an email will be prepopulated with everything for you! All you'll need to do is fill in your contact's information and any spots indicated in the provided template!</h3>
+    </div>
+  </div>
+</section>
 {% endblock %}
