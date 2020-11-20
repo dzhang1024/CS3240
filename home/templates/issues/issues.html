@@ -21,14 +21,14 @@
                   </div>
                 </div>
             {% endif %}
-        {%endfor%}
+        {% endfor %}
         </div>
     {% else %}
         <p>There are currently no issues available.</p>
     {% endif %}
     <br>
   <div class="text-center">
-    <p> Not the issues you're looking for? No problem! Click below to submit a new issue!</p>
+    <p>Don't see the issue you're looking for? No problem! Click below to submit a new issue!</p>
     <a href="{% url 'home:submit_issue' %}" class="btn btn-primary text-center">Create New Issue</a>
   </div>
 {%endblock%}

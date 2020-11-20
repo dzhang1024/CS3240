@@ -18,7 +18,7 @@ class Issue(models.Model):
     def __str__(self):
         return self.issue_name
 
-
+# ManyToMany for saving issues derived from https://stackoverflow.com/questions/49098606/how-to-save-a-users-favorite-posts-in-django
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True, primary_key=True)
     street_address = models.CharField(max_length=100, blank=True, null=True)

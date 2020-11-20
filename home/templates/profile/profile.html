@@ -30,6 +30,15 @@
       </div>
   </div>
 
+  <div class="card">
+    <h5 class="card-header">Saved Issues</h5>
+    <ul class="list-group">
+      {% for issue in userprofile.saved_issues.all %}
+        <li class="list-group-item">Name: {{ issue.issue_name }} -- Description: {{ issue.description }} </li>
+      {% endfor %}
+    </ul>
+  </div>
+
 {% else %}
   <p>You are not logged in. Please log in below. </p>
   <a href="{% provider_login_url 'google' %}">Login with Google</a>

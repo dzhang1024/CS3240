@@ -3,7 +3,7 @@
 {%block content%}
 
 <div class="card mb-3">
-  <h5 class="card-header">{{ issue.issue_name }}</h5>
+  <h5 class="card-header text-center">{{ issue.issue_name }}</h5>
   {% if issue.image %}
     <img class="card-img-top-description" src="{{ issue.image.url }}" alt="Image for {{ issue.issue_name }}">
   {% else %}
@@ -14,14 +14,12 @@
     <li class="list-group-item">Template: {{ issue.email_template }}</li>
   </div>
   <div class="card-body text-center">
-    <a href="{%url 'home:email_page' issue.id%}" class="btn btn-primary ">Contact Representative</a>
-
     <form id="save_issue{{issues.id}}" method="POST" action="{%url 'home:save_issue' issue.id%}">
       {% csrf_token %}
-      <input type="hidden" name="issue"/>
-      <input type="submit" class="btn btn-primary" value="Save Issue" />
+      <input type="submit" class="btn btn-primary" value="Save Issue to Profile" />
     </form>
-
+    <br>
+    <a href="{%url 'home:email_page' issue.id%}" class="btn btn-primary ">Contact Representative</a>
   </div>
 </div>
 {%endblock%}
