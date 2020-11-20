@@ -65,6 +65,15 @@ class SubmitIssue(SuccessMessageMixin, CreateView): #use a createview form to al
 
 
 @login_required
+def save_issue(request, pk):
+    if request.method == 'POST':
+        issue_to_save = Issue.objects.get(pk=pk)
+        request.user.userprofile.saved_issues.add(issue_to_save)
+        messages.add_message(request, messages.INFO, 'Saved Issue to profile!')
+        return redirect('home:issues')
+
+
+@login_required
 def contact(request, pk): #this is the views page that controls what we see in terms of forms
     if request.method == 'GET':
         issueName = Issue.objects.get(pk=pk)
@@ -86,15 +95,6 @@ def contact(request, pk): #this is the views page that controls what we see in t
                 return HttpResponse('Invalid header found')
             return render(request, 'issues/email_success.html') #redirects to some success page (for now)
     return render(request, 'issues/email_page.html', {'form': form})
-
-
-def save_issue(request, pk):
-    if request.method == 'POST':
-        issue_to_save = Issue.objects.get(pk=pk)
-        user = request.user
-        user.saved_issues.add(issue_to_save)
-        messages.add_message(request, messages.INFO, 'Saved Issue to profile!')
-        return render(request, 'issues/')
 
 
 @login_required
