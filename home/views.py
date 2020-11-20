@@ -38,7 +38,7 @@ def update_profile(request):
             profile_form_object.save()
             return redirect('/profile')
         else:
-            messages.error(request, ("You've done goofed."))
+            messages.error(request, ("Invalid data received. Please try again."))
     else:
         user_form_data = UserForm(instance=request.user)
         profile_form_data = ProfileForm(instance=request.user.userprofile)
@@ -86,6 +86,15 @@ def contact(request, pk): #this is the views page that controls what we see in t
                 return HttpResponse('Invalid header found')
             return render(request, 'issues/email_success.html') #redirects to some success page (for now)
     return render(request, 'issues/email_page.html', {'form': form})
+
+
+def save_issue(request, pk):
+    if request.method == 'POST':
+        issue_to_save = Issue.objects.get(pk=pk)
+        user = request.user
+        user.saved_issues.add(issue_to_save)
+        messages.add_message(request, messages.INFO, 'Saved Issue to profile!')
+        return render(request, 'issues/')
 
 
 @login_required

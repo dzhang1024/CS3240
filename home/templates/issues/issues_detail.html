@@ -15,6 +15,13 @@
   </div>
   <div class="card-body text-center">
     <a href="{%url 'home:email_page' issue.id%}" class="btn btn-primary ">Contact Representative</a>
+
+    <form id="save_issue{{issues.id}}" method="POST" action="{%url 'home:issues_detail' issue.id%}">
+      {% csrf_token %}
+<!--      <input type="hidden" name="supporttype" />-->
+      <input type="submit" class="btn btn-primary" value="Save Issue" />
+    </form>
+
   </div>
 </div>
 {%endblock%}
