@@ -5,7 +5,8 @@
 {% if user.is_authenticated %}
 
   <div class="card" >
-    <h5 class="card-header">{{ user.get_full_name }}'s Profile</h5>
+    <h5 class="card-header text-left">{{ user.get_full_name }}'s Profile</h5>
+
     <ul class="list-group">
       <li class="list-group-item">Full Name: {{ user.first_name }} {{ user.last_name }}</li>
       <li class="list-group-item">Email: {{ user.email }}</li>

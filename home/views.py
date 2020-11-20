@@ -74,6 +74,15 @@ def save_issue(request, pk):
 
 
 @login_required
+def remove_issue(request, pk):
+    if request.method == 'POST':
+        issue_to_remove = Issue.objects.get(pk=pk)
+        request.user.userprofile.saved_issues.remove(issue_to_remove)
+        messages.add_message(request, messages.INFO, 'Removed Issue to profile!')
+        return redirect('home:issues')
+
+
+@login_required
 def contact(request, pk): #this is the views page that controls what we see in terms of forms
     if request.method == 'GET':
         issueName = Issue.objects.get(pk=pk)

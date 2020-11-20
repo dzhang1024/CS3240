@@ -14,10 +14,21 @@
     <li class="list-group-item">Template: {{ issue.email_template }}</li>
   </div>
   <div class="card-body text-center">
+    {% if issue in user.userprofile.saved_issues.all %}
+
+    <form id="remove_issue{{issues.id}}" method="POST" action="{%url 'home:remove_issue' issue.id%}">
+      {% csrf_token %}
+      <input type="submit" class="btn btn-primary" value="Unsave Issue" />
+    </form>
+
+    {% else %}
+
     <form id="save_issue{{issues.id}}" method="POST" action="{%url 'home:save_issue' issue.id%}">
       {% csrf_token %}
-      <input type="submit" class="btn btn-primary" value="Save Issue to Profile" />
+      <input type="submit" class="btn btn-primary" value="Save Issue" />
     </form>
+
+    {% endif %}
     <br>
     <a href="{%url 'home:email_page' issue.id%}" class="btn btn-primary ">Contact Representative</a>
   </div>

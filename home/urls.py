@@ -16,6 +16,7 @@ urlpatterns = [
     path('issues/', views.IssueList.as_view(), name='issues'),
     path('issues/<int:pk>/', views.IssueDetail.as_view(), name='issues_detail'),
     path('issues/<int:pk>/saved', views.save_issue, name='save_issue'),
+    path('issues/<int:pk>/removed', views.remove_issue, name='remove_issue'),
     path('issues/<int:pk>/email_page', views.contact, name='email_page'),
     path('issues/<int:pk>/email_page/success/', views.success, name='success'), #successurl
     path('issues/submit/', login_required(views.SubmitIssue.as_view()), name='submit_issue'),
