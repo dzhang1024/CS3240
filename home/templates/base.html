@@ -54,7 +54,19 @@
         </div>
       </nav>
     <main role="main" class="container">
-      <br></br>
+      <br>
+      {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == "success" %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success! </strong>{{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+        {% endif %}
+        {% endfor %}
+      {% endif %}
       {% block content %}
       {% endblock %}
     </main>
