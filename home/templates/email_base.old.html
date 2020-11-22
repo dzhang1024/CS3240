@@ -38,6 +38,11 @@
             <li class="nav-item">
               <a class="nav-link" href="{%url 'home:submit_issue'%}">Submit Issue Template</a>
           </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'home:saved_issues'%}">Saved Issues</a>
+            </li>
+            {% endif %}
           </ul>
           {% if user.is_authenticated %}
           <ul class="navbar-nav">

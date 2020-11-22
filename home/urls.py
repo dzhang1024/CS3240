@@ -20,6 +20,7 @@ urlpatterns = [
     path('issues/<int:pk>/email_page', views.contact, name='email_page'),
     path('issues/<int:pk>/email_page/success/', views.success, name='success'), #successurl
     path('issues/submit/', login_required(views.SubmitIssue.as_view()), name='submit_issue'),
+    path('issues/saved_issues/', views.saved_issues, name='saved_issues'),
 ]
 
 # Derived from

@@ -1,0 +1,15 @@
+{% extends 'saved_base.html' %}
+{% load socialaccount %}
+
+{% block content %}
+<h1>Here are your saved issues:</h1>
+<ul class="list-group">
+    {%if userprofile.saved_issues.all%}
+        {% for issue in userprofile.saved_issues.all %}
+            <li class="list-group-item"><a href="{%url 'home:issues_detail' issue.id%}">{{ issue.issue_name }} </a>-- Description: {{ issue.description }} </li>
+        {% endfor %}
+    {%else%}
+        <p>You currently do not have any saved issues! Click <a href="{%url 'home:issues'%}">here</a> to go to the issues page to browse issues you are interested in saving!</p>
+    {%endif%}
+</ul>
+{% endblock %}
