@@ -33,10 +33,10 @@
               <a class="nav-link" href="{%url 'home:home'%}">Home</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="{%url 'home:issues'%}">Issues<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{%url 'home:issues'%}">List of Issues</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{%url 'home:submit_issue'%}">Submit Issue Template</a>
+              <a class="nav-link" href="{%url 'home:submit_issue'%}">Submit New Issue</a>
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item">

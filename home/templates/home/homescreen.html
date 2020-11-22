@@ -8,14 +8,15 @@
 </style>
 
 {% if user.is_authenticated %}
-  <h1>Welcome to Hoos Listening, {{ user.first_name }}!</h1>
+  <h1 class="display-4">Welcome to Hoos Listening, {{ user.first_name }}!</h1>
   <p>Want to look at some existing issues? <a href="{%url 'home:issues'%}">Click here!</a></p>
   <p>Want to express something you're passionate about? <a href="{%url 'home:submit_issue'%}">Click here!</a></p>
   <hr>
 {% else %}
-  <h1>Welcome to Hoos Listening!</h1>
+  <h1 class="display-4">Welcome to Hoos Listening!</h1>
   <p>Hey newcomer! We're excited to have you use Hoos Listening! But first, please login with a Google Account so that we can register a profile in your name!</p>
   <p><a href="{% provider_login_url 'google' %}" class="btn btn-primary">Login with Google</a></p>
+  <hr>
 {% endif %}
 <section class="page-section" id="services">
   <div class="container">

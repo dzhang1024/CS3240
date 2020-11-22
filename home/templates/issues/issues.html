@@ -1,9 +1,8 @@
 {% extends 'issue_base.html' %}
 
 {%block content%}
-    <h1>Issues List</h1>
-
-    <p>{% if user.is_authenticated %}Hey {{ user.first_name }}!{% else %} Hello!{% endif %} Here are some of the most popular issues occuring right now!</p>
+    <h1 class="text-center display-4">Issues List</h1>
+    <p class="text-center">{% if user.is_authenticated %}Hey {{ user.first_name }}!{% else %} Hello!{% endif %} Here are some of the most popular issues occuring right now!</p>
     {% if all_issues %}
         <div class="card-deck-issues">
         {%for issue in all_issues%}

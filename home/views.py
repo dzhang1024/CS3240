@@ -63,9 +63,11 @@ class SubmitIssue(SuccessMessageMixin, CreateView): #use a createview form to al
     success_url = reverse_lazy('home:issues')
     success_message = "Thanks for submitting a new issue! It is now pending admin approval."
 
+
 @login_required
 def saved_issues(request):
     return render(request, 'issues/saved_issues.html', {'userprofile': request.user.userprofile})
+
 
 @login_required
 def save_issue(request, pk):
