@@ -8,10 +8,10 @@
     {%if userprofile.saved_issues.all%}
         {% for issue in userprofile.saved_issues.all %}
             {% if issue.approval == True %}
-            <li class="list-group-item"><a href="{%url 'home:issues_detail' issue.id%}">{{ issue.issue_name }}</a> - {{ issue.description }}
+    <li class="list-group-item"><a class="text-success" href="{%url 'home:issues_detail' issue.id%}"><u><b>{{ issue.issue_name }}</b></u></a> - {{ issue.description }}
             </li>
             {% else %}
-            <li class="list-group-item"><a href="{%url 'home:issues_detail' issue.id%}">{{ issue.issue_name }} </a> - {{ issue.description }} </li>
+    <li class="list-group-item"><a class="text-danger" href="{%url 'home:issues_detail' issue.id%}"><u><b>{{ issue.issue_name }}</b></u></a> - {{ issue.description }} </li>
             {% endif %}
         {% endfor %}
     {%else%}
