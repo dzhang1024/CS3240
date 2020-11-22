@@ -9,8 +9,9 @@
 
 {% if user.is_authenticated %}
   <h1 class="display-4">Welcome to Hoos Listening, {{ user.first_name }}!</h1>
-  <p>Want to look at some existing issues? <a href="{%url 'home:issues'%}">Click here!</a></p>
-  <p>Want to express something you're passionate about? <a href="{%url 'home:submit_issue'%}">Click here!</a></p>
+  <br>
+  <p class="h5">Want to look at some existing issues? <a href="{%url 'home:issues'%}">Click here!</a></p>
+  <p class="h5">Want to express something you're passionate about? <a href="{%url 'home:submit_issue'%}">Click here!</a></p>
   <hr>
 {% else %}
   <h1 class="display-4">Welcome to Hoos Listening!</h1>
@@ -47,12 +48,12 @@
                   <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
               </span>
               <h4 class="my-3">3. Submit your own issues</h4>
-              <p class="text-muted">Can't find what you're looking for? <a href="{%url 'home:submit_issue'%}">Submit</a> your own issue complete with an image, description and email template</p>
+              <p class="text-muted">Can't find what you're looking for? <a href="{%url 'home:submit_issue'%}">Submit</a> your own issue complete with an (optional) image, description, and email template!</p>
           </div>
       </div>
       <div class="text-center">
         <h4 class="my-3">4. Email!</h4>
-        <p class="text-muted">Simply click 'Email Representative' while looking through an issue and an email will be prepopulated with everything for you! All you'll need to do is fill in your contact's information and any spots indicated in the provided template!</h3>
+        <p class="text-muted">Simply click 'Email Representative' while looking at an issue and an email template will be prepopulated with everything! All you'll need to do is fill in your contact's information and any spots indicated in the provided template!</h3>
     </div>
   </div>
 </section>
