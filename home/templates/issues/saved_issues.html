@@ -27,7 +27,7 @@
     {% endfor %}
     </div>
 {% else %}
-    <p>There are currently no issues available.</p>
+<p class="text-center">You currently do not have any saved issues, {{ user.first_name }}! Click <a href="{%url 'home:issues'%}">here</a> to go to the issues page to browse issues you are interested in saving!</p>
 {% endif %}
 
 {% endblock %}

@@ -30,7 +30,9 @@
         Note: Contact information above may be automatically included in any email submitted from this account. If you would like to omit any information from the emails, then please remove the relevant information above.
       </div>
   </div>
+
   <br>
+
   <div class="card">
     <h5 class="card-header">Saved Issues - <span class="text-success">Approved</span> | <span class="text-danger">Pending Approval</span></h5>
   </h6>
@@ -44,7 +46,10 @@
                   {% endif %}
              {% endfor %}
           {%else%}
-            <p class="text-center">You currently do not have any saved issues, {{ user.first_name }}! Click <a href="{%url 'home:issues'%}">here</a> to go to the issues page to browse issues you are interested in saving!</p>
+          <li class="list-group-item text-center">
+            You currently do not have any saved issues, {{ user.first_name }}! Click <a href="{%url 'home:issues'%}">here</a> to go to the issues page to browse issues you are interested in saving!
+          </li>
+
           {%endif%}
       </ul>
     </div>
