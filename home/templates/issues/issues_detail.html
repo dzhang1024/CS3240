@@ -14,22 +14,25 @@
     <li class="list-group-item">Template: {{ issue.email_template }}</li>
   </div>
   <div class="card-body text-center">
-    {% if issue in user.userprofile.saved_issues.all %}
 
-    <form id="remove_issue{{issues.id}}" method="POST" action="{%url 'home:remove_issue' issue.id%}">
-      {% csrf_token %}
-      <input type="submit" class="btn btn-primary" value="Unsave Issue" />
-    </form>
+    {% if user.is_authenticated %}
+      {% if issue in user.userprofile.saved_issues.all %}
+      <form id="remove_issue{{issues.id}}" method="POST" action="{%url 'home:remove_issue' issue.id%}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <button type="submit" class="btn btn-danger">Unsave Issue</button>
+      </form>
 
-    {% else %}
+      {% else %}
 
-    <form id="save_issue{{issues.id}}" method="POST" action="{%url 'home:save_issue' issue.id%}">
-      {% csrf_token %}
-      <input type="submit" class="btn btn-primary" value="Save Issue" />
-    </form>
-
+      <form id="save_issue{{issues.id}}" method="POST" action="{%url 'home:save_issue' issue.id%}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <button type="submit" class="btn btn-success">Save Issue</button>
+      </form>
     {% endif %}
     <br>
+    {% endif %}
     <a href="{%url 'home:email_page' issue.id%}" class="btn btn-primary ">Contact Representative</a>
   </div>
 </div>

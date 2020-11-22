@@ -68,14 +68,16 @@ class SubmitIssue(SuccessMessageMixin, CreateView): #use a createview form to al
 def saved_issues(request):
     return render(request, 'issues/saved_issues.html', {'userprofile': request.user.userprofile})
 
-
+# Redirect back to previous page from https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request
 @login_required
 def save_issue(request, pk):
     if request.method == 'POST':
         issue_to_save = Issue.objects.get(pk=pk)
         request.user.userprofile.saved_issues.add(issue_to_save)
         messages.add_message(request, messages.INFO, 'Saved Issue to profile!')
-        return redirect('home:issues')
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+        # return redirect('home:issues')
 
 
 @login_required
@@ -84,7 +86,10 @@ def remove_issue(request, pk):
         issue_to_remove = Issue.objects.get(pk=pk)
         request.user.userprofile.saved_issues.remove(issue_to_remove)
         messages.add_message(request, messages.INFO, 'Removed Issue to profile!')
-        return redirect('home:issues')
+        next = request.POST.get('next', '/')
+        return HttpResponseRedirect(next)
+
+        # return redirect('home:issues')
 
 
 @login_required
