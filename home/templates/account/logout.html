@@ -3,11 +3,11 @@
 {% block head_title %}Sign Out{% endblock %}
 
 {% block content %}
-<h1>Log Out</h1>
-
-<p>Are you sure you want to Log out?</p>
-
-<form method="post" action="{% url 'account_logout' %}">
+<h1 class="display-4 text-center">Log Out</h1>
+<br>
+<p class="text-center">Are you sure you want to Log out?</p>
+<br>
+<form method="post" action="{% url 'account_logout' %}" class="text-center">
   {% csrf_token %}
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
