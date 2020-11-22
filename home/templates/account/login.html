@@ -15,6 +15,10 @@
 <p class="text-center">{% blocktrans with site.name as site_name %} To access this page, please sign in with one
 of your existing third party accounts listed below. {% endblocktrans %}</p>
 
-{% include "socialaccount/snippets/provider_list.html" with process="login" %}
+<div class="text-center">
+  <ul class="list-unstyled h4">
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+  </ul>
+</div>
 
 {% endblock %}

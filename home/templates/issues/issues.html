@@ -1,7 +1,7 @@
 {% extends 'issue_base.html' %}
 
 {%block content%}
-    <h1 class="text-center display-4">Issues List</h1>
+    <h1 class="text-center display-4">List of Issues</h1>
     <p class="text-center">{% if user.is_authenticated %}Hey {{ user.first_name }}!{% else %} Hello!{% endif %} Here are some of the most popular issues occuring right now!</p>
     {% if all_issues %}
         <div class="card-deck-issues">
@@ -28,6 +28,6 @@
     <br>
   <div class="text-center">
     <p>Don't see the issue you're looking for? No problem! Click below to submit a new issue!</p>
-    <a href="{% url 'home:submit_issue' %}" class="btn btn-primary text-center">Create New Issue</a>
+    <a href="{% url 'home:submit_issue' %}" class="btn btn-info text-center">Create New Issue</a>
   </div>
 {%endblock%}

@@ -77,7 +77,8 @@ def save_issue(request, pk):
         messages.add_message(request, messages.INFO, 'Saved Issue to profile!')
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
-        # return redirect('home:issues')
+    else:
+        return redirect('home:issues')
 
 
 @login_required
@@ -88,8 +89,8 @@ def remove_issue(request, pk):
         messages.add_message(request, messages.INFO, 'Removed Issue to profile!')
         next = request.POST.get('next', '/')
         return HttpResponseRedirect(next)
-
-        # return redirect('home:issues')
+    else:
+        return redirect('home:issues')
 
 
 @login_required

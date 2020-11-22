@@ -1,0 +1,20 @@
+{% extends 'issue_base.html' %}
+{% load bootstrap4 %}
+{%block content%}
+
+<div class="container">
+  <div class="row">
+    <div class=col-lg>
+    <h1 class="mt-4">{{ issue.issue_name }}</h1>
+    <p class="lead">{{ issue.description }}</p>
+    <hr>
+    {% if issue.image %}
+      <img class="img-rounded" src="{{ issue.image.url }}" alt="Image for {{ issue.issue_name }}">
+    {% else %}
+      <img class="img-responsive" src="https://hooslistening119f20.s3.amazonaws.com/documents/default_image.png" alt="Issue Image" width="15%" height="25%">
+    {% endif %}
+    <hr>
+    </div>
+  </div>
+</div>
+{%endblock%}
