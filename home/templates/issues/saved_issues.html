@@ -4,20 +4,6 @@
 {% block content %}
 <h1 class="display-4 text-center">Your Saved Issues</h1>
 <h5 class="text-center"> <small class="text-muted">Note: <span class="text-success">Green</span> titles indicates that the issue has been approved by administrators, while <span class="text-danger">red</span> titles indicates that the issue is currently pending approval.</small></h5>
-<ul class="list-group pull-right">
-    {%if userprofile.saved_issues.all%}
-        {% for issue in userprofile.saved_issues.all %}
-            {% if issue.approval == True %}
-    <li class="list-group-item"><a class="text-success" href="{%url 'home:issues_detail' issue.id%}"><u><b>{{ issue.issue_name }}</b></u></a> - {{ issue.description }}
-            </li>
-            {% else %}
-    <li class="list-group-item"><a class="text-danger" href="{%url 'home:issues_detail' issue.id%}"><u><b>{{ issue.issue_name }}</b></u></a> - {{ issue.description }} </li>
-            {% endif %}
-        {% endfor %}
-    {%else%}
-        <p class="text-center">You currently do not have any saved issues, {{ user.first_name }}! Click <a href="{%url 'home:issues'%}">here</a> to go to the issues page to browse issues you are interested in saving!</p>
-    {%endif%}
-</ul>
 
 {% if userprofile.saved_issues.all %}
     <div class="card-deck-issues">

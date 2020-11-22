@@ -32,18 +32,22 @@
   </div>
   <br>
   <div class="card">
-    <h5 class="card-header">Saved Issues</h5>
-    <ul class="list-group">
-      {%if userprofile.saved_issues.all%}
-        {% for issue in userprofile.saved_issues.all %}
-            <li class="list-group-item"><a href="{%url 'home:issues_detail' issue.id%}">{{ issue.issue_name }} </a>-- Description: {{ issue.description }} </li>
-        {% endfor %}
-      {%else%}
-      <li class="list-group-item">You currently do not have any saved issues! Click <a href="{%url 'home:issues'%}">here</a> to go to the issues page to browse issues you are interested in saving!</li>
-      {%endif%}
-    </ul>
-  </div>
-
+    <h5 class="card-header">Saved Issues - <span class="text-success">Approved</span> | <span class="text-danger">Pending Approval</span></h5>
+  </h6>
+      <ul class="list-group">
+          {%if userprofile.saved_issues.all%}
+              {% for issue in userprofile.saved_issues.all %}
+                  {% if issue.approval == True %}
+                    <li class="list-group-item"><a class="text-success" href="{%url 'home:issues_detail' issue.id%}"><u><b>{{ issue.issue_name }}</b></u></a> - {{ issue.description }}</li>
+                  {% else %}
+                    <li class="list-group-item"><a class="text-danger" href="{%url 'home:issues_detail' issue.id%}"><u><b>{{ issue.issue_name }}</b></u></a> - {{ issue.description }} </li>
+                  {% endif %}
+             {% endfor %}
+          {%else%}
+            <p class="text-center">You currently do not have any saved issues, {{ user.first_name }}! Click <a href="{%url 'home:issues'%}">here</a> to go to the issues page to browse issues you are interested in saving!</p>
+          {%endif%}
+      </ul>
+    </div>
 {% else %}
   <p>You are not logged in. Please log in below. </p>
   <a href="{% provider_login_url 'google' %}">Login with Google</a>
