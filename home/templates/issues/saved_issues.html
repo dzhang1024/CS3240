@@ -14,7 +14,7 @@
             {% else %}
               <img class="card-img-top" src="https://hooslistening119f20.s3.amazonaws.com/documents/default_image.png" alt="Issue Image">
             {% endif %}
-                {% if issue.approval == True %}
+                {% if issue.approval %}
                 <h5 class="card-header text-success">{{ issue.issue_name }}</h5>
                 {% else %}
                 <h5 class="card-header text-danger">{{ issue.issue_name }}</h5>

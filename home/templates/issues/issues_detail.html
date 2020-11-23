@@ -3,13 +3,18 @@
 {%block content%}
 
 <div class="card mb-3">
-  <h5 class="card-header text-center">{{ issue.issue_name }}</h5>
+  {% if issue.approval %}
+  <h5 class="card-header text-center text-success">{{ issue.issue_name }}</h5>
+  {% else %}
+  <h5 class="card-header text-center text-danger">{{ issue.issue_name }}</h5>
+  {% endif %}
+
   {% if issue.image %}
     <img class="card-img-top-description center-block" src="{{ issue.image.url }}" alt="Image for {{ issue.issue_name }}">
   {% else %}
     <img class="card-img-top-description" src="https://hooslistening119f20.s3.amazonaws.com/documents/default_image.png" alt="Issue Image">
   {% endif %}
-  <div class="list-group list-grou-flush">
+  <div class="list-group list-group-flush">
     <li class="list-group-item">Description: {{ issue.description }}</li>
     <li class="list-group-item">Template: {{ issue.email_template }}</li>
   </div>
@@ -33,7 +38,11 @@
     {% endif %}
     <br>
     {% endif %}
+    {% if issue.approval %}
     <a href="{%url 'home:email_page' issue.id%}" class="btn btn-primary ">Contact Representative</a>
+    {% else %}
+    <a href="#" class="btn btn-secondary disabled" role="button" aria-disabled="true">Cannot Contact Representative - Pending Approval</a>
+    {% endif %}
   </div>
 </div>
 {%endblock%}
