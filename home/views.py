@@ -1,6 +1,23 @@
+# /***************************************************************************************
+# *  REFERENCES
+# *  Title: How to redirect to previous page in Django after POST request
+# *  Author: Oleg, Antoine Pinsard
+# *  Date: 11/21/2020
+# *  Code version: N/A
+# *  URL: https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request
+# *  Software License: CC BY-SA 3.0
+# *
+# *  Title: How to Extend Django User Model
+# *  Author: Vitor Freitas
+# *  Date: 11/05/2020
+# *  Code version: N/A
+# *  URL: https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
+# *  Software License: CC BY-NC-SA 3.0
+# ***************************************************************************************/
+
+
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse, reverse_lazy
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
@@ -11,18 +28,19 @@ from django.views import generic
 from django.views.generic.edit import CreateView
 from .models import Issue, UserProfile
 from django.core.mail import send_mail, BadHeaderError
-from django.conf import settings
 from django.contrib.messages.views import SuccessMessageMixin
 
 
 def home(request):
     return render(request, 'home/homescreen.html')
 
+
 @login_required
 def profile(request):
     return render(request, 'profile/profile.html', {'userprofile': request.user.userprofile})
 
 
+# Derived from Reference 2: "How to Extend Django User Model"
 @login_required
 @transaction.atomic
 def update_profile(request):
@@ -68,15 +86,16 @@ class SubmitIssue(SuccessMessageMixin, CreateView): #use a createview form to al
 def saved_issues(request):
     return render(request, 'issues/saved_issues.html', {'userprofile': request.user.userprofile})
 
-# Redirect back to previous page from https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request
+
+# Derived from Reference 1: "How to redirect to previous page in Django after POST request"
 @login_required
 def save_issue(request, pk):
     if request.method == 'POST':
         issue_to_save = Issue.objects.get(pk=pk)
         request.user.userprofile.saved_issues.add(issue_to_save)
         messages.add_message(request, messages.INFO, 'Saved Issue to profile!')
-        next = request.POST.get('next', '/')
-        return HttpResponseRedirect(next)
+        nextlink = request.POST.get('next', '/')
+        return HttpResponseRedirect(nextlink)
     else:
         return redirect('home:issues')
 
@@ -86,9 +105,9 @@ def remove_issue(request, pk):
     if request.method == 'POST':
         issue_to_remove = Issue.objects.get(pk=pk)
         request.user.userprofile.saved_issues.remove(issue_to_remove)
-        messages.add_message(request, messages.INFO, 'Removed Issue to profile!')
-        next = request.POST.get('next', '/')
-        return HttpResponseRedirect(next)
+        messages.add_message(request, messages.INFO, 'Removed Issue from profile!')
+        nextlink = request.POST.get('next', '/')
+        return HttpResponseRedirect(nextlink)
     else:
         return redirect('home:issues')
 
@@ -110,7 +129,7 @@ def contact(request, pk): #this is the views page that controls what we see in t
             try: 
                 #this sends the email with the subject line as desired
                 #recipient is filled out
-                send_mail('Hoos Listening: ' + subject, message + '\n \n' + 'Best regards,\n' + sender, "Hoos Listening <civic@hooslistening.email>", [recipient_email], fail_silently=False)
+                send_mail('Hoos Listening: ' + subject, message + '\n \n' + 'Best regards,\n' + sender + '\n\n' + request.user.email, "Hoos Listening <civic@hooslistening.email>", [recipient_email], fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
             return render(request, 'issues/email_success.html') #redirects to some success page (for now)

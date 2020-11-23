@@ -1,3 +1,27 @@
+# /***************************************************************************************
+# *  REFERENCES
+# *  Title: In 5 mins: Set up Google login to sign up users on Django
+# *  Author: Zoe Chew
+# *  Date: 10/28/2020
+# *  Code version: N/A
+# *  URL: https://medium.com/@whizzoe/in-5-mins-set-up-google-login-to-sign-up-users-on-django-e71d5c38f5d5
+# *  Software License: N/A (None specified in the blog post...)
+# *
+# *  Title: How to Setup Amazon S3 in a Django Project
+# *  Author: Vitor Freitas
+# *  Date: 11/23/2020
+# *  Code version: N/A
+# *  URL: https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html
+# *  Software License: CC BY-NC-SA 3.0
+# *
+# *  Title: django-allauth | Installation
+# *  Author: Raymond Penners
+# *  Date: 11/28/2020
+# *  Code version: 0.43.0
+# *  URL: https://django-allauth.readthedocs.io/en/latest/installation.html
+# *  Software License: MIT
+# ***************************************************************************************/
+
 """
 Django settings for hooslistening project.
 
@@ -14,11 +38,10 @@ import dj_database_url
 import os
 
 # Set to true if in development environment, else set to false if in production
-DEVELOPMENT = False
+DEVELOPMENT = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -27,12 +50,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'fl-b2ftmgk7&#h_$)7&-q7o4%$kwfz5t43kg3tu4l#clj@ckrl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['hooslistening119.herokuapp.com', '127.0.0.1', 'localhost']
 
 # Application definition
-
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'django.contrib.admin',
@@ -42,7 +64,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    # 'social_app',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -191,14 +212,13 @@ SOCIALACCOUNT_PROVIDERS = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.sendgrid.net'
-# EMAIL_HOST = 'hooslistening.email'
 EMAIL_HOST_USER = 'apikey'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-# EMAIL_HOST_PASSWORD = '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'
+# EMAIL_HOST_PASSWORD = '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' -- OLD PASSWORD
 EMAIL_HOST_PASSWORD = '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'
 
-
+# Derived from Reference 2: "How to Setup Amazon S3 in a Django Project"
 MEDIA_URL = '/documents/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

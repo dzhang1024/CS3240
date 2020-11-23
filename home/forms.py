@@ -1,8 +1,18 @@
+# /***************************************************************************************
+# *  REFERENCES
+# *  Title: How to Extend Django User Model
+# *  Author: Vitor Freitas
+# *  Date: 11/05/2020
+# *  Code version: N/A
+# *  URL: https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
+# *  Software License: CC BY-NC-SA 3.0
+# *
+# ***************************************************************************************/
+
+
 from .models import UserProfile
 from django import forms
 from django.contrib.auth.models import User
-
-# Adapted from https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
 
 
 class UserForm(forms.ModelForm):
@@ -11,6 +21,7 @@ class UserForm(forms.ModelForm):
         fields = ('first_name', 'last_name', 'email')
 
 
+# Adapted from Reference 1: "How to Extend Django User Model"
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile

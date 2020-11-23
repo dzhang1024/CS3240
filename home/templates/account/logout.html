@@ -1,3 +1,14 @@
+<!--
+# /***************************************************************************************
+# *  REFERENCES
+# *  Title: How to edit django-allauth default templates?
+# *  Author: Sebastian Tare B., TitanFighter
+# *  Date: 11/5/2020
+# *  Code version: N/A
+# *  URL: https://stackoverflow.com/questions/39009638/how-to-edit-django-allauth-default-templates
+# *  Software License: CC BY-SA 3.0
+# ***************************************************************************************/
+-->
 {% extends "account/base.html" %}
 
 {% block head_title %}Sign Out{% endblock %}
@@ -13,8 +24,6 @@
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
   {% endif %}
   <button type="submit" class="btn btn-success">Yes, Log Out!</button>
-  <a href="/" class="btn btn-danger" role="button">No, Go Home</a>
+  <a href="/" class="btn btn-danger" role="button">No, Go Back!</a>
 </form>
-
-
 {% endblock %}
