@@ -7,6 +7,12 @@
 # *  URL: https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
 # *  Software License: CC BY-NC-SA 3.0
 # *
+# *  Title: How to email a Django form 
+# *  Author: Will Vincent
+# *  Date: 07/17/2020
+# *  Code version: N/A
+# *  URL: https://learndjango.com/tutorials/django-email-contact-form 
+# *  Software License: N/A
 # ***************************************************************************************/
 
 
