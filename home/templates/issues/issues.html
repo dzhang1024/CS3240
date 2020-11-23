@@ -25,6 +25,33 @@
     {% else %}
         <p>There are currently no issues available.</p>
     {% endif %}
+    
+    <br>
+    <hr>
+    <h1 class="text-center display-4">Pending Issues</h1>
+    <p class="text-center">Here are the currently pending issues, maybe what you're looking for is still waiting for admin approval?</p>
+    {% if all_issues %}
+        <div class="card-deck-issues">
+        {%for issue in all_issues%}
+            {% if issue.approval == False %}
+                <div class="card text-center">
+                {% if issue.image %}
+                  <img class="card-img-top" src="{{ issue.image.url }}" alt="Image for {{ issue.issue_name }}">
+                {% else %}
+                  <img class="card-img-top" src="https://hooslistening119f20.s3.amazonaws.com/documents/default_image.png" alt="Issue Image">
+                {% endif %}
+                    <h5 class="card-header"> {{ issue.issue_name }} </h5>
+                  <div class="card-body">
+                    <p class="card-text"> {{ issue.description }} </p>
+                    <a href="{%url 'home:issues_detail' issue.id%}" class="btn btn-primary">More Info</a>
+                  </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% else %}
+        <p>There are currently no pending issues.</p>
+    {% endif %}
     <br>
   <div class="text-center">
     <p>Don't see the issue you're looking for? No problem! Click below to submit a new issue!</p>
